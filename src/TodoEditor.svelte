@@ -1,15 +1,11 @@
 <script lang="ts">
-    class Todo {
-        constructor(
-           public text = '',
-           public completed = false
-        ) {}
-    }
+    import TodoItem from "./TodoItem.svelte";
+    import Todo from "./Todo";
 
     let todos: Todo[] = JSON.parse(localStorage.getItem('todos')) || [new Todo()];
 
     function addTodo() {
-        todos = todos.concat({completed: false, text: ''});
+        todos = todos.concat(new Todo());
     }
 
     function deleteCompleted() {
@@ -25,10 +21,7 @@
 <div class="form">
   <form>
     {#each todos as todo}
-      <div>
-        <input type="checkbox" bind:checked={todo.completed} disabled={todo.text===''}>
-        <input type="text" placeholder="Add a new todo" bind:value={todo.text} disabled={todo.completed}>
-      </div>
+      <TodoItem bind:todo/>
     {/each}
     <div class="btn">
       <button on:click|preventDefault={addTodo} disabled={!todos[todos.length - 1].text}>Add</button>
@@ -48,26 +41,6 @@
         max-width: 840px;
         display: flex;
         flex-direction: column;
-    }
-
-    input {
-        padding: 8px;
-    }
-    input[type=checkbox] {
-        opacity: 100%;
-        border: 2px solid #ddd;
-        display: inline-block;
-        vertical-align: middle;
-        width: 18px;
-        height: 18px;
-    }
-
-    input[type=text] {
-        display: inline-block;
-        width: 70%;
-        border-radius: 5px;
-        letter-spacing: 1px;
-        padding-left: 10px;
     }
 
     button {

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Todo from "./Todo.svelte";
+    import TodoEditor from "./TodoEditor.svelte";
 </script>
 
 <div class="container">
@@ -7,7 +7,7 @@
     <h1>TODO</h1>
   </header>
   <main>
-    <Todo/>
+    <TodoEditor/>
   </main>
   <footer>
     <p>That's all</p>
