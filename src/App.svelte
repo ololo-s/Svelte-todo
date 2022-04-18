@@ -2,7 +2,6 @@
     import Todo from "./Todo.svelte";
 </script>
 
-<body>
 <div class="container">
   <header>
     <h1>TODO</h1>
@@ -14,7 +13,6 @@
     <p>That's all</p>
   </footer>
 </div>
-</body>
 
 <style>
     body {
