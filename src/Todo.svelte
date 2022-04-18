@@ -1,7 +1,12 @@
-<script>
-    let todos = JSON.parse(localStorage.getItem('todos')) || [
-        {completed: false, text: ''},
-    ];
+<script lang="ts">
+    class Todo {
+        constructor(
+           public text = '',
+           public completed = false
+        ) {}
+    }
+
+    let todos: Todo[] = JSON.parse(localStorage.getItem('todos')) || [new Todo()];
 
     function addTodo() {
         todos = todos.concat({completed: false, text: ''});
@@ -32,7 +37,7 @@
   </form>
   {#if incomplete > 0}
     <p>Left {incomplete} todo(s)</p>
-    {:else}
+  {:else}
     <p>Done!</p>
   {/if}
 </div>
