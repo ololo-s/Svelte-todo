@@ -1,8 +1,8 @@
 <script lang="ts">
     import TodoItem from "./TodoItem.svelte";
-    import Todo from "./Todo";
+    import Todo, {load, save} from "./Todo";
 
-    let todos: Todo[] = JSON.parse(localStorage.getItem('todos')) || [new Todo()];
+    let todos: Todo[] = load() || [new Todo()];
 
     function addTodo() {
         todos = todos.concat(new Todo());
@@ -13,7 +13,7 @@
     }
 
     $: incomplete = todos.filter(item => !item.completed).length - 1;
-    $: localStorage.setItem('todos', JSON.stringify(todos));
+    $: save(todos)
 </script>
 
 <!--Ctrl+Alt+L formatting code-->
