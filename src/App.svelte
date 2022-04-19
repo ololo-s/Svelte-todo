@@ -15,9 +15,6 @@
 </div>
 
 <style>
-    body {
-        font-family: "Calibri Light";
-    }
 
     main {
         text-align: center;
