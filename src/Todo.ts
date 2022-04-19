@@ -12,3 +12,5 @@ export function save(todos: Todo[]) {
 export function load(): Todo[] | null {
     return JSON.parse(localStorage.getItem('todos'))
 }
+
+

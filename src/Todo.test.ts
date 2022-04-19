@@ -22,6 +22,12 @@ it('loading from localStorage', () => {
     expect(todos[0].completed).eq(true)
 })
 
+it('empty localStorage', () => {
+    localStorage.clear()
+    const todos = load()
+    expect(todos).eq(null)
+})
+
 it('math works', () => {
     expect(2+2).eq(4)
 })
