@@ -12,6 +12,10 @@
         todos = todos.filter(item => !item.completed);
     }
 
+    function deleteTodo(todo: Todo) {
+        todos = todos.filter(item => item !== todo);
+    }
+
     $: incomplete = todos.filter(item => !item.completed).length - 1;
     $: save(todos)
 </script>
@@ -19,9 +23,10 @@
 <!--Ctrl+Alt+L formatting code-->
 
 <div class="form">
+  {hello}
   <form>
-    {#each todos as todo}
-      <TodoItem bind:todo/>
+    {#each todos as todo, i}
+      <TodoItem bind:todo on:delete={() => deleteTodo(todo)}/>
     {/each}
     <div class="btn">
       <button on:click|preventDefault={addTodo} disabled={!todos[todos.length - 1].text}>Add</button>

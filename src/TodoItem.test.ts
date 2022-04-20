@@ -18,3 +18,9 @@ it('renders completed item', ()=> {
     expect(checkbox.checked).eq(true)
 })
 
+it('renders delete', async ()=> {
+    const {container, component} = render(TodoItem, {todo: new Todo()})
+    const button = container.querySelector('button') as HTMLButtonElement
+    expect(button).to.exist
+    await fireEvent.click(button)
+})

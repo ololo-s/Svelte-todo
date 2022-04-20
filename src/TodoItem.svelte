@@ -1,15 +1,17 @@
 <script lang="ts">
     import Todo from "./Todo";
-
+    import {createEventDispatcher} from "svelte";
     export let todo: Todo;
+    const dispatch = createEventDispatcher();
 </script>
 
 <div>
   <input type="checkbox" bind:checked={todo.completed} disabled={todo.text === ''}>
   <input type="text" placeholder="Add a new todo" bind:value={todo.text} disabled={todo.completed}>
+  <button type="button" on:click={() => dispatch('delete')}>&times;</button>
 </div>
-
 <style>
+
     input {
         padding: 8px;
     }

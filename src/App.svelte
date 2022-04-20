@@ -15,7 +15,6 @@
 </div>
 
 <style>
-
     main {
         text-align: center;
         padding: 1em;
